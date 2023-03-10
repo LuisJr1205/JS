@@ -1,4 +1,5 @@
 // Mis propuestas con respecto a los ejercicios
+// Ejercicios no.1
 function cuentaCaracteres(cadena="") {
     if(!cadena){
         console.warn("No ingresaste ninguna cadena");
@@ -7,30 +8,31 @@ function cuentaCaracteres(cadena="") {
     }
 }
 
+cuentaCaracteres("Hola Mi nombre es Luis");
+
+// Ejercicio no.2
 function dividirCadena(cadena, indicador) {
     let cadenanueva = cadena.substring(0,indicador);
     console.log(cadenanueva);
 }
 
+dividirCadena("Hola Mundo", 15);
+
+// Ejercicio no.3
 function arrayCadena(cadena, caracter) {
     let array = cadena.split(caracter)
     console.log(array);
 }
 
-const cadenarepetida = (cadena, indicador) => cadena.repeat(indicador);
-
-let numeros = [1,2,3,4,5,6,9]
-
-cuentaCaracteres("Hola Mi nombre es Luis");
-
-dividirCadena("Hola Mundo", 15);
-
 arrayCadena("Hola me llamo luis Enrique Madero", " ");
+
+// Ejercicio no.4
+const cadenarepetida = (cadena, indicador) => cadena.repeat(indicador);
 
 console.log(cadenarepetida("Luis ", 3));
 
 // Ejercicios no 5-8
-
+// Ejercicio 5
 const invertirTexto = (cadena ="") => 
     (!cadena)
     ?console.warn("No ingresaste ninguna cadena")
@@ -38,6 +40,7 @@ const invertirTexto = (cadena ="") =>
 
 invertirTexto("Anita lava la tina");
 
+// Ejercicio 6
 const palabrasRepetidas = (cadena="", palabra="") =>{
     if(!cadena) return console.warn("No ingresaste ningun texto");
 
@@ -58,6 +61,7 @@ const palabrasRepetidas = (cadena="", palabra="") =>{
 
 palabrasRepetidas("Hola Mundo mundo mundo", "mundo");
 
+// Ejercicio 7
 const palindromo = (palabra="")=>{
     if(!palabra) return console.warn("No ingresaste ningun texto");
 
@@ -71,6 +75,7 @@ const palindromo = (palabra="")=>{
 
 palindromo("eye");
 
+// Ejerccicio 8
 const eliminarCaracteres = (texto ="", patron="") =>
     (!texto)
      ?console.warn("No ingresaste ninguna cadena")
@@ -82,6 +87,7 @@ eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5","xyz");
 
 // Ejercicios del 9 al 11
 
+// Ejercicio 9
 // La forma en que la hace el video
 const aleatorio = () => console.info(Math.round((Math.random()*100)+500))
 aleatorio();
@@ -95,6 +101,7 @@ const numeroRandom = function(){
 
 console.info(numeroRandom());
 
+// Ejercicio 10
 const capicua = (numero=0) =>{
     if(!numero) return console.warn("No ingresaste un numero");
     
@@ -111,6 +118,7 @@ const capicua = (numero=0) =>{
 
 capicua(200);
 
+// Ejercicio 11
 const numeroFactorial = (numero=undefined)=>{
     if(numero===undefined) return console.error("No ingresaste el numero a evaluar");
 
@@ -128,10 +136,6 @@ const numeroFactorial = (numero=undefined)=>{
     return console.info(`El factorial del numero ${numero} es ${factorial}`);
 }
 
-numeroFactorial();
-numeroFactorial(0);
-numeroFactorial(-5);
-numeroFactorial("2");
 numeroFactorial(3);
 
 
