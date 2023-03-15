@@ -48,6 +48,257 @@
 
         // Para poder ver los symbols dentro de un   
         console.log(Object.getOwnPropertySymbols(persona));
+
+        // SET es un tipo de arreglo mejorado
+        console.clear();
+        const set = new Set([1,2,3,4,5,true, false,false,{},{},"hola","HOLA"]);
+        console.log(set);
+        console.log(set.size);
+
+        const set2 = new Set();
+        set2.add(1);
+        set2.add(2);
+        set2.add(2);
+        set2.add(3);
+        set2.add(true);
+        set2.add(false);
+        set2.add(true);
+        set2.add({});
+        console.log(set2);
+
+        console.log("recorriendo set 1");
+        for (item of set) {
+            console.log(item);
+        }
+        console.log("recorriendo set 2");
+        set2.forEach(item =>console.log(item));
+
+        // Convertimos un set en un array
+        let arreglo = Array.from(set);
+        console.log(arreglo);
+        console.log(arreglo[0]);
+        console.log(arreglo[9]);
+
+        // Para borrar un dato del set
+        set.delete("HOLA");
+        console.log(set);
+        // Para saber si esta dentro del set se usa has
+        console.log(set.has("hola"));
+
+        // DATO MAP tipos de datos complejos al igual que SET es un objeto mejorado
+        const mapa = new Map();
+        mapa.set("nombre","Luis");
+        mapa.set("apellido","Madero");
+        mapa.set("edad","23");
+
+        console.log(mapa);
+        console.log(mapa.size);
+        // Valida si esta en el map
+        console.log(mapa.has("correo"));
+        console.log(mapa.has("nombre"));
+        // Nos muestra el valor del campo
+        console.log(mapa.get("nombre"));
+        // Modificar un campo 
+        mapa.set("nombre","Luis Enrique");
+        console.log(mapa.get("nombre"));
+        // Para borrar un campo
+        mapa.delete("apellido");
+        console.log(mapa);
+
+        for (let [key,value] of mapa){
+            console.log(`Llave: ${key}, Valor:${value}`);
+        }
+
+        // Otra forma de declararlo seria
+        const mapa2 = new Map([
+            ["nombre","Nacho"],
+            ["edad",6],
+            ["animal","perro"],
+            [null,"nulo"]
+        ]);
+
+        console.log(mapa2);
+        
+        const llavesMapa2 = [...mapa2.keys()];
+        const valoresMapa2 = [...mapa2.values()];
+
+        console.log(llavesMapa2);
+        console.log(valoresMapa2);
+
+        // WEAK SET no se pueden agregar datos como en el set normal
+        console.clear();
+        const ws = new WeakSet();
+        let valor1 = {"valor1":1};
+        let valor2 = {"valor2":2};
+        let valor3 = {"valor3":3};
+
+        ws.add(valor1);
+        ws.add(valor2);
+
+        console.log(ws);
+
+        console.log(ws.has(valor1));
+        console.log(ws.has(valor3));
+
+        ws.delete(valor2);
+        console.log(ws);
+
+        ws.add(valor2);
+        ws.add(valor3);
+        console.log(ws);
+
+        // WEAK MAP
+        // No se declara igual que el otro
+        console.clear();
+        const wm = new WeakMap();
+        let llave1={};
+        let llave2={};
+        let llave3={};
+
+        wm.set(llave1,1);
+        wm.set(llave2,2);
+        console.log(wm);
+        // Para saber si hay una referencia dentro
+        console.log(wm.has(llave1));
+        console.log(wm.has(llave3));
+        // Para obtener los valores
+        console.log(wm.get(llave1));
+        console.log(wm.get(llave2));
+        console.log(wm.get(llave3));
+        // Elimiar con el delete
+        wm.delete(llave2);
+        console.log(wm);
+        // Ingreasr de nuevo
+        wm.set(llave2,2);
+        wm.set(llave3,3);
+        console.log(wm);
+
+        // Iterables e iterators
+        const iterables =new Map([["nombre","jon"],
+        ["edad",35]]);
+        // Accedemos al iterador del iterable
+        const iterador = iterables[Symbol.iterator]();
+        console.log(iterables);
+        console.log(iterador);
+        // No regresa el valor y si ya se acabo el recorido
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+        // console.log(iterador.next());
+
+        let next = iterador.next();
+
+        while(!next.done){
+            console.log(next.value);
+            next = iterador.next();
+        } 
+
+        // GENERATORS sintxis para generara iteradores.
+        function* iterable() {
+            // Es como un return el yield
+            yield "hola";
+            console.log("hola consola");
+            yield "Hola2";
+            console.log("seguimos con mas instrucciones");
+            yield "Hola3";
+            yield "Hola4";
+        }
+
+        let iterador1 = iterable();
+        // console.log(iterador1.next());
+        // console.log(iterador1.next());
+        // console.log(iterador1.next());
+        // console.log(iterador1.next());
+        // console.log(iterador1.next());
+    
+        // Para recorrer 
+        for (let y of iterador1){
+            console.log(y);
+        }
+
+        // Para asignarlo a un array
+        const arr = [...iterable()];
+        console.log(arr);
+
+        // Cuadrado con generator
+        
+        function cuadrado(valor) {
+            setTimeout(()=>{
+                return console.log({valor,resultado: valor*valor})
+            }, Math.random()*1000);
+
+        }
+
+
+        function* generador() {
+            console.log("Inicia Generator");
+            yield cuadrado(0);
+            yield cuadrado(1);
+            yield cuadrado(2);
+            yield cuadrado(3);
+            yield cuadrado(4);
+            yield cuadrado(5);
+            console.log("Termina Generador");
+        }
+
+        let gen = generador();
+
+        // for(let y of gen){
+        //     console.log(y);
+        // }
+
+        console.clear();
+        // PROXIES
+
+        const persona1 = {
+            nombre:"",
+            apellido:"",
+            edad:0
+        }
+
+        const manejador = {
+            set(obj,prop,valor){
+                if (Object.keys(obj).indexOf(prop)===-1) {
+                    return console.error(`La propiedad "${prop}" no existe en el objeto persona.`);
+                }
+                if((prop === "nombre" || prop === "apellido") && !(/^[A-Za-zÑñÁÉÍÓÚáéíóú\s]+$/g.test(valor))){
+                    return console.error(`La propiedad "${prop}" solo acepta letras y espacios en blanco`);
+                }
+
+                obj[prop]=valor;
+            }
+        }
+
+        const luis = new Proxy(persona1,manejador);
+        luis.nombre="Luis";
+        luis.apellido="Madero";
+        luis.edad=23;
+        // luis.twitter = "@LuisJr";
+        console.log(luis);
+
+        console.log(persona1);
+
+        console.clear();
+        // Propiedades dinamicas
+        let aleatorio = Math.round(Math.random()*100+5);
+        const objUsuarios={
+            propiedad: "valor",
+            [`id_${aleatorio}`]:"valor aleatorio"
+        }
+        console.log(objUsuarios);
+
+        const usuarios=["Luis","Enrique","Joshua","Samuel","Brenda"];
+        usuarios.forEach((usuario,index)=>objUsuarios[`id_${index}`]=usuario);
+
+        console.log(objUsuarios);
+
+
+
+
+
+
     </script>
     
 </body>
