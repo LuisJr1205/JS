@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevos tipos de datos en JavaScript</title>
+</head>
+<body>
+    <h1>Nuevos tipos de datos en JAVA SCRIPT</h1>
+
+    <script>
+        let id = Symbol();
+        let id2 = Symbol();
+// Dicen o puede ser que el symbol se use como propiedades privdas
+        console.log(id === id2);
+        console.log(id,id2);
+        console.log(typeof id,typeof id2);
+
+        const NOMBRE = Symbol("nombre");
+        const SALUDAR = Symbol("saludar");
+
+        const persona = {
+            // Symbol creado en un objeto
+            [NOMBRE]:"Enrique", 
+            edad: 35
+        };
+        console.log(persona);
+
+        persona.NOMBRE = "Luis Madero"
+        console.log(persona);
+        console.log(persona.NOMBRE);
+        console.log(persona[NOMBRE]);
+
+        persona[SALUDAR] = function (){
+            console.log(`Hola`);
+        }
+        
+        console.log(persona);
+        persona[SALUDAR]();
+
+
+        // No accede a los symbol ni a su valor por se algo como una propiedad privada
+        for(let propiedad in persona){
+            console.log(propiedad);
+            console.log(persona[propiedad]);
+        }
+
+        // Para poder ver los symbols dentro de un   
+        console.log(Object.getOwnPropertySymbols(persona));
+    </script>
+    
+</body>
+</html>
