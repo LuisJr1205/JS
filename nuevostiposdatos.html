@@ -280,7 +280,7 @@
 
         console.log(persona1);
 
-        console.clear();
+        
         // Propiedades dinamicas
         let aleatorio = Math.round(Math.random()*100+5);
         const objUsuarios={
@@ -293,6 +293,81 @@
         usuarios.forEach((usuario,index)=>objUsuarios[`id_${index}`]=usuario);
 
         console.log(objUsuarios);
+        
+        console.clear();
+        // THIS, CALL, APPLY, BIND
+
+        console.log(this);
+        this.lugar = "Contexto global";
+        
+        function saludar(saludo,quien) {
+            console.log(`${saludo} ${quien} desde el ${this.lugar}`);
+        }
+
+        saludar("Hola","Brenda");
+
+        const obj = {
+            lugar:"contexto objeto"
+        }
+
+        saludar.call(obj,"Hola","Luis");
+        saludar.call(null,"Hola","Luis");
+        saludar.call(this,"Hola","Luis");
+        saludar.apply(obj,["Adios","Maderp"]);
+        saludar.apply(null,["Adios","Maderp"]);
+        saludar.apply(this,["Adios","Maderp"]);
+
+        const person ={
+            nombre:"Luis",
+            saludar: function() {
+                console.log(`Hola ${this.nombre}`)
+            }
+        }
+
+        person.saludar();
+
+        const otraPerson = {
+            saludar:person.saludar.bind(person)
+        }
+
+        otraPerson.saludar();
+        // JSON es un estandar para las lenguajes
+        const json ={
+            nombre:"Luis",
+            numero:23,
+            booleano:true,
+            arreglo:["correr","programar","cocinas"],
+            objeto:{
+                twitter:"@LuisJR",
+                email:"luismadero@gmail.com"
+            },
+            nulo:null
+        }
+
+        // PARSE analiza una notacion json y la convierte en un tipo de dato que js la valide
+        // Los convierte en un objeto, array, true o false, numero o null
+        console.log(JSON.parse("{}"));
+        console.log(JSON.parse("[1,2,3]"));
+        console.log(JSON.parse("true"));
+        console.log(JSON.parse("false"));
+        console.log(JSON.parse("19"));
+        console.log(JSON.parse("null"));
+
+        // Stringify los convierte a cadena de texto.
+        console.log(JSON.stringify({}));
+        console.log(JSON.stringify([1,2,3]));
+        console.log(JSON.stringify(true));
+        console.log(JSON.stringify(false));
+        console.log(JSON.stringify(19));
+        console.log(JSON.stringify(null));
+        console.log(JSON.stringify(undefined));
+        console.log(JSON.stringify({x:2,y:3}));
+        console.log(JSON.stringify(json));
+        console.log(JSON.parse('{"nombre":"Luis","numero":23,"booleano":true,"arreglo":["correr","programar","cocinas"],"objeto":{"twitter":"@LuisJR","email":"luismadero@gmail.com"},"nulo":null} '));
+
+
+
+
 
 
 
