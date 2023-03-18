@@ -42,6 +42,24 @@
             filter: sepia(1);
         }
 
+        .eventos-flujo div{
+            padding: 4rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .uno{
+            background-color: yellow;
+        }
+
+        .dos{
+            background-color: gold;
+        }
+
+        .tres{
+            background-color: lightyellow ;
+        }
+
     </style>
 </head>
 <body>
@@ -111,6 +129,37 @@
             <figcaption></figcaption>
         </figure>
     </template>
+    <h3>Eventos en Java Script</h3>
+    <h4>Manejadores de Eventos</h4>
+    <button onclick="holaMundo()">Eventos con atributo HTML(Esta mal visto)</button>
+    <br><br>
+    <button id="evento-semantico">Evento con manejador semantico</button>
+    <br><br>
+    <button id="evento-multiple">Evento con manejador multiple</button>
+    <br><br>
+    <button id="evento-remover">Removiendo eventos con manejadores multiples</button>
+    <br><br>
+    <h4>Flujo de Eventos</h4>
+    <section class="eventos-flujo">
+        <div class="uno">
+            1
+            <div class="dos">
+                2
+                <div class="tres">
+                    3
+                    <a href="https://jonmircha.com/" target="_blank" rel="noopener">Mas informacion</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h3 style="width: 2000px;">Manejo del BOM</h3>
+    
+    <button id="abrir-ventana">Abrir Ventana</button>
+    <br><br>
+    <button id="cerrar-ventana">Cerrar Ventana</button>
+    <br><br>
+    <button id="imprimir-ventana">Imprimir Ventana</button>
+    <br><br>
 
     <script src="js/dom.js"></script>
     <!-- https://www.google.com/search?q=emmet.io&rlz=1C1UEAD_enMX1045MX1045&oq=emet.&aqs=chrome.1.69i57j0i10i512l6j46i10i512j0i10i512l2.3794j0j7&sourceid=chrome&ie=UTF-8 -->

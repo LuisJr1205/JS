@@ -307,7 +307,7 @@ $cards.appendChild($fragment);
 
 
 // -------------------------------MODIFICANDO ELEMENTOS (OLD STYLE)------------------------------
-
+/*
 const $cards = document.querySelector(".cards"),
     $newCard = document.createElement("figure"),
     $cloneCards = $cards.cloneNode(true);
@@ -323,6 +323,268 @@ $newCard.classList.add("card");
 // ELiminar algun elemento que ya este
 // $cards.removeChild($cards.lastElementChild);
 document.body.appendChild($cloneCards);
+*/
+
+// ---------------------------------MODIFICADO ELEMENTOS NEW STYLE------------------------
+/*
+.insertAdjacent...
+.insertAdjacentElement(posicion,el);
+.insertAdjacentHTML(posicion,html);
+.insertAdjacentText(posicion,text);
+
+Posiciones
+beforebegin(hermano anterior)
+afterbegin(primerhijo)
+beforeend(ultimo hijo)
+afterend(hermano siguiente)
+*/
+/*
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure");
+// Para usar lo que es adjacent
+// $newCard.innerHTML=`<img src="https://placeimg.com/200/200/any" alt="Any">
+            // <figcaption>Any</figcaption>`;
+
+let $contentCard = `<img src="https://placeimg.com/200/200/any" alt="Any">
+                <figcaption></figcaption>`;
+
+$newCard.classList.add("card");
+$newCard.insertAdjacentHTML("beforeend",$contentCard);
+$newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any");
+// $cards.insertAdjacentElement("afterbegin",$newCard);
+// Otra forma de agregar por medio de otro comando
+$cards.prepend($newCard);
+// Ultimo hijo
+$cards.append($newCard);
+// Hermano anterior
+// $cards.before($newCard);
+// Hemano posterior
+$cards.after($newCard);
+*/
+
+// -----------------------------------MANEJADORES DE EVENTOS---------------------------------
+// Event handler (Manejador de eventos)
+/*
+function holaMundo() {
+    alert("Hola Mundo");
+    console.log(event);
+}
+
+function saludar(nombre = "Desconocid@") {
+    alert(`Hola ${nombre}`);
+}
+
+const $eventoSemantico = document.getElementById("evento-semantico"),
+    $eventoMultiple = document.getElementById("evento-multiple"),
+    $eventoRemover = document.getElementById("evento-remover");
+
+
+$eventoSemantico.onclick = holaMundo;
+$eventoSemantico.onclick = function (e){
+    alert("Hola mundo manejador de eventos semantico");
+    console.log(e);
+    console.log(event);
+};
+
+$eventoMultiple.addEventListener("click",holaMundo);
+$eventoMultiple.addEventListener("click",(e)=>{
+    alert("Hola mundo manejador de eventos multiples");
+    console.log(e);
+    console.log(e.type);
+    console.log(e.target);
+});
+
+// Eventos con parametros
+$eventoMultiple.addEventListener("click",()=>{
+    saludar();
+    saludar("Luis");
+});
+
+// Remover eventos
+const removerDobleClick = (e) =>{
+    alert(`Removiendo el evento de tipo ${e.type}`);
+    console.log(e);
+    $eventoRemover.removeEventListener("dblclick",removerDobleClick);
+    $eventoRemover.disabled = true;
+}
+
+
+$eventoRemover.addEventListener("dblclick",removerDobleClick);
+*/
+
+// ---------------------------------FLUJO DE EVENTOS(BURBUJA Y CAPTURA)---------------
+// La propagacion se da del elemento mas interno al externo se le llama fase de burbuja
+/*
+const $divsEventos = document.querySelectorAll(".eventos-flujo div"),
+    $linkEventos = document.querySelector(".eventos-flujo a");
+
+function flujoEventos(e) {
+    console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
+    // Con este se detiene la propagacion
+    e.stopPropagation();
+}
+
+console.log($divsEventos);
+
+$divsEventos.forEach(div => {
+    // Fase de burbuja desde el mas interno al mas externo, con el false o sin 
+    div.addEventListener("click",flujoEventos);
+    // div.addEventListener("click",flujoEventos,false);
+    // Fase de captura del elemento mas externo al mas interno
+    // div.addEventListener("click",flujoEventos,true);
+    // Otra forma de colocarlo es
+    // div.addEventListener("click",flujoEventos,{
+    //     capture: false, //o con true
+    //     once:true,
+    // });
+
+
+});
+
+$linkEventos.addEventListener("click",(e)=>{
+    alert("Hola soy tu amigo Lionel Messi");
+    // Cancelar el evento que tiene por default
+    e.preventDefault();
+    e.stopPropagation();
+});
+
+*/
+// -------------------------------------DOOM: Delegacion de eventos-------------------------
+/*
+function flujoEventos(e) {
+    console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
+}
+
+document.addEventListener("click",(e)=>{
+    console.log("Click en",e.target);
+
+    if (e.target.matches(".eventos-flujo div")) {
+        flujoEventos(e);
+    }
+
+    if (e.target.matches(".eventos-flujo a")) {
+        alert("Hola soy tu amigo Lionel Messi");
+        e.preventDefault();
+    }
+});
+
+*/
+// ----------------------------------BOM: PROPIEDADES Y EVENTOS -----------------------------------
+/*window.addEventListener("resize",(e)=>{
+    console.clear();
+    console.log("***********Evento Resize**************");
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    console.log(window.outerWidth);
+    console.log(window.outerHeight);
+    console.log(e);
+})
+
+window.addEventListener("scroll",(e)=>{
+    console.clear();
+    console.log("***********Evento Scroll**************");
+    console.log(window.scrollX);
+    console.log(window.scrollY);
+    console.log(e);
+})
+
+window.addEventListener("load",(e)=>{
+    console.log("***********Evento Load**************");
+    console.log(window.screenX);
+    console.log(window.screenY);
+    console.log(e);
+})
+
+document.addEventListener("DOMContentLoaded",(e)=>{
+    console.log("***********Evento DOMContentLoaded**************");
+    console.log(window.screenX);
+    console.log(window.screenY);
+    console.log(e);
+})
+*/
+
+//--------------------------------------BOM: METODOS--------------------------------
+// window.alert("Alerta");
+// alert("Alerta");
+// window.confirm("Confirmacion");
+// confirm("Confirmacion");
+// window.prompt("Aviso");
+// prompt("Aviso");
+/*
+const $btnAbrir = document.getElementById("abrir-ventana"),
+    $btnCerrar = document.getElementById("cerrar-ventana"),
+    $btnImprimir = document.getElementById("imprimir-ventana");
+
+let ventana;
+
+$btnAbrir.addEventListener("click",(e)=>{
+   ventana = window.open("https://jonmircha.com");
+});
+
+$btnCerrar.addEventListener("click",(e)=>{
+    ventana.close();
+ });
+
+ $btnImprimir.addEventListener("click",(e)=>{
+    window.print();
+ });
+*/
+
+
+// --------------------------------------BOM: URL, Historial y Navegador----------------------------
+/*
+console.log("**************Objeto URL(location)**************");
+console.log(location);
+// Me da la ruta en donde se origina
+console.log(location.origin);
+console.log(location.protocol);
+console.log(location.host);
+console.log(location.hostname);
+console.log(location.port);
+console.log(location.href);
+console.log(location.hash);
+console.log(location.search);
+console.log(location.pathname);
+*/
+/*
+console.log("**************Objeto Historial(history)**************");
+console.log(history);
+// Cuantas paginas he visitado
+console.log(history.length);
+// history.forward(1);
+// history.go(-3);
+// history.back(2);
+*/
+
+console.log("**************Objeto Navegador(Navigayor)**************");
+console.log(navigator);
+// informacion de la conexion del usuario
+console.log(navigator.connection);
+console.log(navigator.geolocation);
+// Informacion sobre los dispositivos camaras, microdfonos etc
+console.log(navigator.mediaDevices);
+console.log(navigator.mimeTypes);
+// Para saber si pierde o no el usuario la conexion
+console.log(navigator.onLine);
+// Nos sirve para convertir una web app en un aplicaion instalable
+console.log(navigator.serviceWorker);
+console.log(navigator.storage);
+console.log(navigator.usb);
+// Informacion del usuario y la plataforma sobre el navegador
+console.log(navigator.userAgent);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
