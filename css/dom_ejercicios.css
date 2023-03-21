@@ -124,4 +124,77 @@ img{
 }
 
 
+/* Estilos eventos para el teclado */
+
+.stage{
+    display: flex;
+    min-height: 50vh;
+    background-color: var(--main-color);
+}
+
+.ball{
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+/* Boton para llevar arriba */
+.scroll-btn{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: calc(4.25rem + 1vw);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color:  #BAD7E9;
+    color: var(--second-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.scroll-btn:hover{
+    background-color: #000;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+/********************** DARK MODE ********************************************/
+.dark-mode{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    left:1vw ;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color:  #BAD7E9;
+    color: var(--second-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.dark-mode:hover{
+    background-color: #000;
+}
+
+.dark-theme{
+    background-color: #000000ae;
+    color:#fff;
+}
 

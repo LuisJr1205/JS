@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-dark>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css">
     <link rel="stylesheet" href="css/dom_ejercicios.css">
 </head>
-<body>
+<body data-dark>
     <header class="header">
         <h1>Ejercicios del DOM</h1>
     </header>
@@ -19,30 +19,46 @@
     </button>
     <aside class="panel">
         <nav class="menu">
-            <a href="#seccion1">Sección 1</a>
-            <a href="#seccion2">Sección 2</a>
-            <a href="#seccion3">Sección 3</a>
-            <a href="#seccion4">Sección 4</a>
+            <a href="#seccion1">Reloj y Alarma(Ejercicio2)</a>
+            <a href="#seccion2">Movimientos con el teclado</a>
+            <a href="#seccion3">Cuenta regresiva</a>
+            <a href="#seccion4">Responsive Design JS</a>
             <a href="#seccion5">Sección 5</a>
         </nav>
     </aside>
     <main>
         <section id="seccion1" class="section">
-            <h2>Sección 1</h2>
+            <h2>Ejercicio Reloj y Alarma</h2>
+            <div id="reloj"></div>
+            <div>
+                <button id="start-reloj">Iniciar Reloj</button>
+                <button id="end-reloj">Detener Reloj</button>
+                <button id="star-alarm">Iniciar Alarma</button>
+                <button id="end-alarm">Detener Alarma</button>
+            </div>
+            <!-- <audio src="sounds/samsung-lg-galaxy-alarm.mp3" controls></audio> -->
         </section>
         <section id="seccion2" class="section">
-            <h2>Sección 2</h2>
+            <h2>Movimiento con teclado</h2>
+            <article class="stage">
+                <div class="ball"></div>
+            </article>
         </section>
         <section id="seccion3" class="section">
-            <h2>Sección 3</h2>
+            <h2>Cuenta regresiva</h2>
+            <div id="countdown"></div>
         </section>
         <section id="seccion4" class="section">
-            <h2>Sección 4</h2>
+            <h2>Responsive Design JS</h2>
+            <div id="youtube"></div>
+            <div id="gmaps"></div>
         </section>
         <section id="seccion5" class="section">
             <h2>Sección 5</h2>
         </section>
     </main>
+    <button class="scroll-btn hidden">🔝</button>
+    <button class="dark-mode">🌙</button>
     <script src="js/index-dom.js" type="module"></script>
 </body>
 </html>
