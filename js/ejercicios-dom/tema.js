@@ -2,7 +2,11 @@ const d = document;
 export default function darkMode(btn,dataDark){
     const $themeBtn = d.querySelector(btn),
         $selectors = d.querySelectorAll("[data-dark]");
+<<<<<<< HEAD
     // console.log($selectors);
+=======
+    console.log($selectors);
+>>>>>>> 56c105c7ab39725506b9989bb1b357ab9581a3b4
 
     let moon = "🌙",
         sun = "☀️";
@@ -21,7 +25,11 @@ export default function darkMode(btn,dataDark){
 
     d.addEventListener("click",(e)=>{
         if(e.target.matches(btn)){
+<<<<<<< HEAD
             // console.log($themeBtn.textContent);
+=======
+            console.log($themeBtn.textContent);
+>>>>>>> 56c105c7ab39725506b9989bb1b357ab9581a3b4
             if($themeBtn.textContent ===moon){
                 dartMode();
             }else{
