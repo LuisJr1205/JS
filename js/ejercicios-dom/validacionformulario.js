@@ -3,7 +3,7 @@ const d = document;
 export default function formValidation() {
     const $form = d.querySelector(".contact-form"),
         $inputs = d.querySelectorAll(".contact-form [required]");
-        console.log($inputs);
+        // console.log($inputs);
 
     $inputs.forEach((input) => {
         const $span = d.createElement("span");

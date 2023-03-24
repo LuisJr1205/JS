@@ -12,13 +12,11 @@ import webCam from "./ejercicios-dom/cam.js";
 import geolocation from "./ejercicios-dom/localizzacion.js";
 import searchFilters from "./ejercicios-dom/busqueda.js";
 import sorteo from "./ejercicios-dom/sorteo.js";
-<<<<<<< HEAD
 import slider from "./ejercicios-dom/slider.js";
 import scrollSpy from "./ejercicios-dom/scroll_spia.js";
 import smartVideo from "./ejercicios-dom/video.js";
 import formValidation from "./ejercicios-dom/validacionformulario.js";
-=======
->>>>>>> 56c105c7ab39725506b9989bb1b357ab9581a3b4
+import narrador from "./ejercicios-dom/narrador.js";
 
 const d = document;
 
@@ -26,11 +24,7 @@ d.addEventListener("DOMContentLoaded",(e)=>{
     botonMenu(".panel-btn",".panel",".menu a");
     clock("#reloj","#start-reloj","#end-reloj");
     alarm("sounds/samsung-lg-galaxy-alarm.mp3","#star-alarm","#end-alarm");
-<<<<<<< HEAD
     cuentaRegresiva("countdown","May 12, 2023","Feliz Cumpleaños Luis Madero");
-=======
-    cuentaRegresiva("countdown","Mar 21, 2023 13:07:10","Feliz Cumpleaños Luis Madero");
->>>>>>> 56c105c7ab39725506b9989bb1b357ab9581a3b4
     scrollTop(".scroll-btn");
     // darkMode(".dark-mode","dark-theme");
     responsiveMedia("youtube","(min-width: 1024px)",`<a href="https://youtu.be/PMZy53PHbY0" target="_blank" rel="noopener">Ver Video</a>`,`<iframe width="560" height="315" src="https://www.youtube.com/embed/7ZPAe4uFM4U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
@@ -40,15 +34,12 @@ d.addEventListener("DOMContentLoaded",(e)=>{
     webCam("webcam");
     geolocation("geolocation");
     searchFilters(".card-filter",".card");
-<<<<<<< HEAD
     sorteo("#ganador",".player");
     slider();
     scrollSpy();
     smartVideo();
     formValidation();
-=======
-    sorteo("#ganador",".player")
->>>>>>> 56c105c7ab39725506b9989bb1b357ab9581a3b4
+    sorteo("#ganador",".player");
 });
 
 
@@ -59,3 +50,4 @@ d.addEventListener("keydown",(e)=>{
 
 darkMode(".dark-mode","dark-theme");
 network();
+narrador();
