@@ -1,0 +1,11 @@
+{
+    "cadena":"Luis",
+    "numero":23,
+    "booleano":true,
+    "arreglo":["correr","programar","cocinar"],
+    "objeto": {
+        "twitter":"@LuisJR",
+        "email":"luismadero@gmail.com" 
+    },
+    "nulo":null
+}

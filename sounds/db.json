@@ -1,0 +1,51 @@
+{
+    "History":[
+        {
+            "id":1,
+            "nombre":"Lionel Messi",
+            "equipo":"Barcelona"
+        },
+        {
+            "id":2,
+            "nombre":"Maradona",
+            "equipo":"Napoli"
+        },
+        {
+            "id":3,
+            "nombre":"Pele",
+            "equipo":"Santos de Brasil"
+        },
+        {
+            "id":4,
+            "nombre":"Zidane",
+            "equipo":"Real Madrid"
+        },
+        {
+            "id":5,
+            "nombre":"Cristiano",
+            "equipo":"Real Madrid"
+        }
+    ],
+    "Best":[
+        {
+            "id":1,
+            "nombre":"Lionel Messi",
+            "equipo":"Barcelona"
+        },
+        {
+            "id":2,
+            "nombre":"Maradona",
+            "equipo":"Napoli"
+        },
+        {
+            "id":3,
+            "nombre":"Pele",
+            "equipo":"Santos de Brasil"
+        },
+        {
+            "id":4,
+            "nombre":"Zidane",
+            "equipo":"Real Madrid"
+        }
+    ]
+}
