@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST AJAX</title>
+</head>
+<body>
+    <h1>CRUD API REST AJAX</h1>
+    <section class="crud">
+        <article>
+            <h2 class="crud-title">Agregar Jugador Barcelona</h2>
+            <form class="crud-form">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <br>
+                <input type="text" name="posicion" placeholder="Posicion" required>
+                <br>
+                <input type="number" name="camisa" placeholder="Numero de Camiseta" required>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        <article>
+            <h2>Ver Jugadores Barcelona</h2>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Posicion</th>
+                        <th>No. Camiseta</th>
+                        <th>Accion del CRUD</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="position"></td>
+            <td class="number"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script>
+        const d = document,
+            $table = d.querySelector(".crud-table"),
+            $form = d.querySelector(".crud-form"),
+            $title = d.querySelector(".crud-title"),
+            $template = d.getElementById("crud-template").content,
+            $fragment = d.createDocumentFragment();
+
+            // Funcion ajax  en donde recibe url,metodos, aceptar o errir y los datos 
+            const ajax = (options)=>{
+                let {url, method, succes, error, data }=options;
+                const xhr = new XMLHttpRequest();
+
+                xhr.addEventListener("readystatechange", (e)=>{
+                    if(xhr.readyState!==4)return;
+
+                    if(xhr.status >=200 && xhr.status<300){
+                        let json = JSON.parse(xhr.responseText);
+                        succes(json);
+                    }else{
+                        let message = xhr.statusText || "Ocurrio un error";
+                        error(`ERROR ${xhr.status}: ${message}`);
+                    }
+                });
+
+                xhr.open(method || "GET", url);
+                xhr.setRequestHeader("Content-type","application/json; charset=utf-8");
+                xhr.send(JSON.stringify(data));
+            }
+
+            // Hasta aqui llega la funcion ajax
+
+            const getAllPlayers = () => {
+                ajax({
+                    // method:"GET",
+                    url:"http://localhost:3000/Barcelona",
+                    succes:(res) => {
+                        console.log(res);
+                        res.forEach(element => {
+                        // console.log(element.nombre);
+                        $template.querySelector(".name").textContent = element.nombre;
+                        $template.querySelector(".position").textContent = element.posicion;
+                        $template.querySelector(".number").textContent = element.no_camisa;
+                        $template.querySelector(".edit").dataset.id = element.id;
+                        $template.querySelector(".edit").dataset.name = element.nombre;
+                        $template.querySelector(".edit").dataset.position = element.posicion;
+                        $template.querySelector(".edit").dataset.number = element.no_camisa;
+                        $template.querySelector(".delete").dataset.id = element.id;
+
+                        let $clone = d.importNode($template,true);
+                        $fragment.appendChild($clone);
+                        });
+                        $table.querySelector("tbody").appendChild($fragment);
+                    },
+                    error:(err) =>{
+                        console.log(err);
+                        $table.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`);
+                    }
+                });
+            }
+
+            d.addEventListener("DOMContentLoaded", getAllPlayers);
+
+            d.addEventListener("submit",(e)=>{
+                if(e.target === $form){
+                e.preventDefault();
+
+                if(!e.target.id.value){
+                    // CREATE POST
+                    ajax({
+                        url:"http://localhost:3000/Barcelona",
+                        method:"POST",
+                        succes: (res) => location.reload(),
+                        error: (err) => $table.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`),
+                        data:{
+                            nombre: e.target.nombre.value,
+                            posicion: e.target.posicion.value,
+                            no_camisa: e.target.camisa.value,
+                        }
+                    });
+                }else{
+                    // UPDATE PUT
+                    ajax({
+                        url:`http://localhost:3000/Barcelona/${e.target.id.value}`,
+                        method:"PUT",
+                        succes: (res) => location.reload(),
+                        error: (err) => $table.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`),
+                        data:{
+                            nombre: e.target.nombre.value,
+                            posicion: e.target.posicion.value,
+                            no_camisa: e.target.camisa.value,
+                        }
+                    });
+                }
+            }
+        });
+
+
+            d.addEventListener("click",(e)=>{
+                if(e.target.matches(".edit")){
+                    // alert("Presionaste editar");
+                    $title.textContent ="Editar Futbolista";
+                    $form.nombre.value = e.target.dataset.name;
+                    $form.posicion.value = e.target.dataset.position;
+                    $form.camisa.value = e.target.dataset.number;
+                    $form.id.value = e.target.dataset.id;
+                }
+                if(e.target.matches(".delete")){
+                    let isDelete = confirm(`¿Desar eliminar el id ${e.target.dataset.id}?`);
+
+                    if(isDelete){
+                        // DELETE
+                        ajax({
+                        url:`http://localhost:3000/Barcelona/${e.target.dataset.id}`,
+                        method:"DELETE",
+                        succes: (res) => location.reload(),
+                        error: (err) => alert(err)
+                    });
+                    }
+                }
+            })
+    </script>
+</body>
+</html>

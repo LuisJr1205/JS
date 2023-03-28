@@ -1,51 +1,91 @@
 {
-    "History":[
-        {
-            "id":1,
-            "nombre":"Lionel Messi",
-            "equipo":"Barcelona"
-        },
-        {
-            "id":2,
-            "nombre":"Maradona",
-            "equipo":"Napoli"
-        },
-        {
-            "id":3,
-            "nombre":"Pele",
-            "equipo":"Santos de Brasil"
-        },
-        {
-            "id":4,
-            "nombre":"Zidane",
-            "equipo":"Real Madrid"
-        },
-        {
-            "id":5,
-            "nombre":"Cristiano",
-            "equipo":"Real Madrid"
-        }
-    ],
-    "Best":[
-        {
-            "id":1,
-            "nombre":"Lionel Messi",
-            "equipo":"Barcelona"
-        },
-        {
-            "id":2,
-            "nombre":"Maradona",
-            "equipo":"Napoli"
-        },
-        {
-            "id":3,
-            "nombre":"Pele",
-            "equipo":"Santos de Brasil"
-        },
-        {
-            "id":4,
-            "nombre":"Zidane",
-            "equipo":"Real Madrid"
-        }
-    ]
+  "Barcelona": [
+    {
+      "id": 1,
+      "nombre": "Lionel Messi",
+      "posicion": "Delantero",
+      "no_camisa": 10
+    },
+    {
+      "id": 2,
+      "nombre": "Andres Iniesta",
+      "posicion": "Medio Campista",
+      "no_camisa": 8
+    },
+    {
+      "id": 3,
+      "nombre": "Xavi Hernandez",
+      "posicion": "Medio Campista",
+      "no_camisa": 6
+    },
+    {
+      "id": 4,
+      "nombre": "Neymar",
+      "posicion": "Delantero",
+      "no_camisa": 11
+    },
+    {
+      "id": 5,
+      "nombre": "Luis Suarez",
+      "posicion": "Delantero",
+      "no_camisa": 9
+    },
+    {
+      "id": 6,
+      "nombre": "Gerard Pique",
+      "posicion": "Defensa",
+      "no_camisa": 3
+    },
+    {
+      "nombre": "Ronal Araujo",
+      "posicion": "Defensas",
+      "no_camisa": 3,
+      "id": 7
+    },
+    {
+      "nombre": "Pedro Gonzalez",
+      "posicion": "Medio Campista",
+      "no_camisa": "8",
+      "id": 8
+    },
+    {
+      "nombre": "Luis Madero",
+      "posicion": "Medio Campista",
+      "no_camisa": "11",
+      "id": 9
+    },
+    {
+      "nombre": "Pedro Gonzalez",
+      "posicion": "Medio Campista",
+      "no_camisa": "8",
+      "id": 10
+    }
+  ],
+  "Real-Madrid": [
+    {
+      "id": 1,
+      "nombre": "Luka Modric",
+      "equipo": "Medio Campista"
+    },
+    {
+      "id": 2,
+      "nombre": "Toni Kroos",
+      "equipo": "Medio Campista"
+    },
+    {
+      "id": 3,
+      "nombre": "Gareth Bale",
+      "equipo": "Delantero"
+    },
+    {
+      "id": 4,
+      "nombre": "Karim Benzema",
+      "equipo": "Delantero"
+    },
+    {
+      "id": 5,
+      "nombre": "Cristiano Ronaldo",
+      "equipo": "Delantero"
+    }
+  ]
 }
