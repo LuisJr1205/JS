@@ -37,9 +37,9 @@
       "no_camisa": 3
     },
     {
-      "nombre": "Ronal Araujo",
-      "posicion": "Defensas",
-      "no_camisa": 3,
+      "nombre": "Ronald Araujo",
+      "posicion": "Defensa",
+      "no_camisa": "3",
       "id": 7
     },
     {
@@ -50,7 +50,7 @@
     },
     {
       "nombre": "Luis Madero",
-      "posicion": "Medio Campista",
+      "posicion": "Delantero",
       "no_camisa": "11",
       "id": 9
     },
@@ -59,6 +59,12 @@
       "posicion": "Medio Campista",
       "no_camisa": "8",
       "id": 10
+    },
+    {
+      "nombre": "Julian Alvarez",
+      "posicion": "Delantero",
+      "no_camisa": "9",
+      "id": 11
     }
   ],
   "Real-Madrid": [
