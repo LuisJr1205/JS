@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog con Markdown y showdown con javascript</title>
+</head>
+<body>
+    <h1>Blog con Markdown y showdown con javascript</h1>
+    <main></main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+
+    <script>
+        const d = document,
+         $main=d.querySelector("main");
+
+         fetch("assets/java_markdown.md")
+         .then((res)=> res.ok ? res.text(): Promise.reject(res))
+         .then((text)=>{
+            console.log(text);
+            $main.innerHTML = new showdown.Converter().makeHtml(text);
+         })
+         .catch((error)=>{
+            console.log(error);
+            let message = error.statusText || "ocurrio un error";
+            $main.innerHTML=`Error ${error.status}: ${message}`;
+         })
+    </script>
+</body>
+</html>
+<!-- CSS Mark DOWN -->
+<!-- https://css-tricks.com/choosing-right-markdown-parser/ -->
+
+<!-- Libreria -->
+<!-- https://showdownjs.com/ -->
+
+<!-- Para obtener un cdn -->
+<!-- https://cdnjs.com/libraries/showdown -->
