@@ -2,6 +2,8 @@ import api from "../helpers/wp_api.js";
 import { ajax } from "../helpers/ajax.js";
 import { PostCard } from "./postCard.js";
 import { Post } from "./post.js";
+import { SearchCard } from "./searchCard.js";
+import { ContactForm } from "./contactform.js";
 
 const d = document;
 
@@ -27,17 +29,33 @@ export async function Router() {
         });
     }else if(hash.includes("#/search")){
         let query = localStorage.getItem("wpSearch");
-        if(!query) return false;
+
+        if(!query){
+            d.querySelector(".loader").style.display = "none"; 
+            return false;
+        }
+
          await ajax({
-            url:`${api.SEARCH}${query}`,
+            url:`${api.SEARCH}/${query}`,
             cbSuccess:(search) =>{
                 console.log(search);
+                let html = "";
+                if(search.length ===0){
+                    html = `
+                    <p class="error">
+                     No exiten resultados para <mark>${query}</mark>
+                    </p>
+                    `;
+                }else{
+                    search.forEach(post => (html += SearchCard(post)));
+                }
+                $main.innerHTML = html;
             }
          });
 
 
-    }else if(hash.includes("#/contacto")){
-        $main.innerHTML = "<h2>Seccion de contacto</h2>";
+    }else if(hash.includes("#/contacto")){  
+        $main.appendChild(ContactForm());
     }else{
         await ajax({
             url:`${api.POST}/${localStorage.getItem("wpPostId")}`,

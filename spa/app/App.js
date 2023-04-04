@@ -2,6 +2,7 @@ import { Header } from "./components/header.js";
 import { Loader } from "./components/loader.js";
 import { Main } from "./components/main.js";
 import { Router } from "./components/Router.js";
+import { infiniteScroll } from "./helpers/infinitescroll.js";
 
 export function App(){
     const $root = document.getElementById("root");
@@ -12,4 +13,5 @@ export function App(){
     $root.appendChild(Loader());
     
     Router();
+    infiniteScroll();
 }
